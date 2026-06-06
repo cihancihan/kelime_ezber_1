@@ -24,9 +24,13 @@ if not exist ".env" (
     echo UYARI: .env dosyasi bulunamadi! Lutfen .env.example dosyasinin kopyalayip adini .env yapin ve icine GEMINI_API_KEY bilginizi yazin.
 )
 
+echo Sunucu calistiriliyor! Lutfen acilan yeni siyah pencereyi kapatmayin.
+start "VocabBlitz Sunucusu" cmd /k "npm run dev"
+
+echo Sunucunun hazir olmasi icin birkac saniye bekleniyor...
+timeout /t 5 /nobreak >nul
+
 echo Tarayici aciliyor...
 start http://localhost:3000
 
-echo Sunucu calistiriliyor! Kapatmak icin bu pencereyi kapatabilirsiniz.
-cmd /k "npm run dev"
 
