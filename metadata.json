@@ -1,0 +1,6 @@
+{
+  "name": "VocabBlitz IELTS",
+  "description": "High-efficiency English vocabulary learning web application with Spaced Repetition and AI distractors.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
