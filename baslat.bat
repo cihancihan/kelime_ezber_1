@@ -1,11 +1,14 @@
 @echo off
+cd /d "%~dp0"
 echo VocabBlitz Baslatiliyor...
 
 :: Node.js'in yuklu olup olmadigini kontrol et
 node -v >nul 2>&1
 if %errorlevel% neq 0 (
+    echo ========================================================
     echo HATA: Node.js bilgisayarinizda yuklu degil!
-    echo Lutfen once https://nodejs.org adresinden Node.js'i indirip kurun.
+    echo Lutfen once https://nodejs.org adresinden indirip kurun.
+    echo ========================================================
     pause
     exit /b
 )
@@ -18,17 +21,12 @@ if not exist "node_modules\" (
 
 :: .env dosyasi yoksa uyar
 if not exist ".env" (
-    echo UYARI: .env dosyasi bulunamadi!
-    echo Lutfen .env.example dosyasinin adini .env yapip icine GEMINI_API_KEY bilginizi girin.
-    echo Yine de devam ediliyor...
+    echo UYARI: .env dosyasi bulunamadi! Lutfen .env.example dosyasinin kopyalayip adini .env yapin ve icine GEMINI_API_KEY bilginizi yazin.
 )
 
-:: Tarayiciyi otomatik olarak ac
 echo Tarayici aciliyor...
 start http://localhost:3000
 
-:: Uygulama sunucusunu baslat
-echo Sunucu calistiriliyor! Sunucuyu durdurmak isterseniz bu siyah pencereyi kapatabilirsiniz.
-call npm run dev
+echo Sunucu calistiriliyor! Kapatmak icin bu pencereyi kapatabilirsiniz.
+cmd /k "npm run dev"
 
-pause
