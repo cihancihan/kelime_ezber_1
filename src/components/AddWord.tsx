@@ -21,7 +21,7 @@ export default function AddWord() {
       setInputWord('');
     } catch (error) {
       console.error(error);
-      alert('Failed to process word. Ensure AI credits and valid English word.');
+      alert(`Failed to process word: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
       setIsSubmitting(false);
     }

@@ -17,6 +17,9 @@ app.use(express.json());
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 async function generateContentWithRetry(options: any) {
+  if (!process.env.GEMINI_API_KEY || process.env.GEMINI_API_KEY === 'MY_GEMINI_API_KEY') {
+    throw new Error("Geçerli bir GEMINI_API_KEY bulunamadı. Lütfen .env dosyanızı kontrol edin.");
+  }
   for (let i = 0; i < 3; i++) {
     try {
       return await ai.models.generateContent(options);
